@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index');
 Route::group(['middleware' => 'auth'],function (){
     Route::get('/','HomeController@dateView');
     Route::get('/daily','HomeController@dailyView');
-    Route::get('/calander','HomeController@calander');
+    Route::get('/calender','HomeController@calander');
 
     Route::post('/set/daily','UserController@setDailySchedule');
     Route::post('/set/date','UserController@setDateSchedule');

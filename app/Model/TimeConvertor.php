@@ -2,7 +2,9 @@
 
 namespace App\Model;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Morilog\Jalali\Facades\jDate;
 use Morilog\Jalali\jDateTime;
 
 class TimeConvertor extends Model
@@ -65,6 +67,13 @@ class TimeConvertor extends Model
         $date = $year.'-'.$month.'-'.$day;
         return $date;
     }
+
+//    public static function getDay($date)
+//    {
+//        $date = Carbon::now();
+//        logger($date->weekOfYear);
+////        return date('w', strtotime($date));
+//    }
 
 
 }
