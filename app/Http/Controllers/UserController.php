@@ -7,6 +7,7 @@ use App\Model\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Mockery\Exception;
 
 class UserController extends Controller
 {
@@ -16,24 +17,23 @@ class UserController extends Controller
      */
     public function setDailySchedule(Request $request){
         $this->validate($request , [
-           'day_of_week' => 'required',
-           'time' => 'required',
-           'describe' => 'required',
+            'day_of_week' => 'required',
+            'time' => 'required',
+            'describe' => 'required',
         ]);
+        try{
+            $program = new Program();
+            $program->user_id = Auth::user()->id;
+            $program->day_of_week = Input::get('day_of_week');
+            $program->time = str_replace([" AM" ," PM"],"",Input::get('time'));
+            $program->describe = Input::get('describe');
 
-        $program = new Program();
-        $program->user_id = Auth::user()->id;
-        $program->day_of_week = Input::get('day_of_week');
-        $program->describe = Input::get('describe');
-
-        $status = 'success';
-        if ($program->save()){
-            $status = 'failed';
+            return redirect()->back();
+        }catch (Exception $e){
+            return redirect()->back();
         }
 
-        return [
-            'status' => $status
-        ];
+
     }
 
     /**
@@ -58,16 +58,23 @@ class UserController extends Controller
             'describe' => 'required',
         ]);
 
-        $day = Day::where('date_en',Input::get('date'))->first();
 
-        if ($day){
-            $program = new Program();
-            $program->user_id = Auth::user()->id;
-            $program->day_id = $day->id;
-            $program->save();
+        try{
+            $day = Day::where('date_en',Input::get('date'))->first();
+
+            if ($day){
+                $program = new Program();
+                $program->user_id = Auth::user()->id;
+                $program->day_id = $day->id;
+                $program->time = str_replace([" AM" ," PM"],"",Input::get('time'));
+                $program->describe = Input::get('describe');
+                $program->save();
+            }
+
+            return redirect()->back();
+        }catch (Exception $e){
+            return redirect()->back();
         }
-
-        return redirect()->back();
     }
 
     /**

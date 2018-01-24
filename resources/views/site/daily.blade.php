@@ -9,9 +9,11 @@
         </div>
         <div class="panel-body container-fluid">
             <div class="row row-lg">
-                <div class="form-group col-xs-12 col-md-6">
+                <form method="post" action="{{URL::to('/set/daily')}}">
+                    {{Form::token()}}
+                    <div class="form-group col-xs-12 col-md-6">
                 <label class="form-control-label" for="inputBasicFirstName">Day Of Week:</label>
-                    <select class="form-control" id="day" data-plugin="select2">
+                    <select class="form-control" name="day_of_week" id="day" data-plugin="select2">
                         <option value="0">Saturday</option>
                         <option value="1">Sunday</option>
                         <option value="2">Monday</option>
@@ -22,14 +24,19 @@
                     </select>
                 </div>
                 <div class="form-group col-xs-12 col-md-6">
-                    <label class="form-control-label" for="inputBasicFirstName">Time:</label>
-                    <input type="text" class="form-control" id="timepicker1" name="inputFirstName" placeholder="00:00" autocomplete="off">
+                    <label class="form-control-label" for="inputBasicFirstName">Day Of Week:</label>
+                    <input type="text" class="form-control" name="time" id="timepicker1" name="inputFirstName" placeholder="00:00" autocomplete="off">
                 </div>
+                    <div class="form-group col-xs-12 col-md-6">
+                        <label class="form-control-label" for="inputBasicFirstName">title:</label>
+                        <input type="text" name="describe" class="form-control" id="describe" name="title" autocomplete="off">
+                    </div>
+                <div class="form-group" class="form-group col-xs-12 col-md-6">
+                    <button style="float: right" type="submit" class="btn btn-primary" id="SaveDailySchedule">Save</button>
+                </div>
+                </form>
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <button type="button" class="btn btn-primary" id="SaveDailySchedule">Save</button>
     </div>
 @endsection
 
