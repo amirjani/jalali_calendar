@@ -68,12 +68,13 @@ class TimeConvertor extends Model
         return $date;
     }
 
-//    public static function getDay($date)
-//    {
-//        $date = Carbon::now();
-//        logger($date->weekOfYear);
-////        return date('w', strtotime($date));
-//    }
+    public static function getWeek($date)
+    {
+//        logger($date);
+        $week = Carbon::parse($date);
+//        logger($shit->weekOfMonth);
+        return $week->weekOfYear;
+    }
 
 
 }

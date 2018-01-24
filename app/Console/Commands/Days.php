@@ -51,9 +51,10 @@ class Days extends Command
 //                $week = Carbon::createFromDate($miladiDate);
 //                logger($week);
 
-                
 
-//                $day = TimeConvertor::getDay();
+
+
+//                logger($)
 //                if ( $day % 2 == 0){
 //                    $isEven = 1 ;
 //                }else{
@@ -64,13 +65,17 @@ class Days extends Command
                 for ($i = 1 ; $i <= 366  ; $i++){
                     $shamsiDate = TimeConvertor::ConvertMiladiToShamsi($miladiDate);
                     $dayOfWeek = TimeConvertor::dayOfWeek($miladiDate);
-
+                    $week = TimeConvertor::getWeek($miladiDate);
                     if (TimeConvertor::getDateYear($shamsiDate) == $year){
                         $day = new Day();
                         $day->date_en = $miladiDate;
                         $day->date_fa = $shamsiDate;
                         $day->day_of_week = $dayOfWeek;
-                        $day->even_week = 0;
+                        if ($week % 2 == 0 ){
+                            $day->even_week = 0;
+                        }else{
+                            $day->even_week = 1 ;
+                        }
                         $day->save();
                     }
                     $miladiDate = date('Y-m-d', strtotime('+1 day', strtotime($miladiDate)));
