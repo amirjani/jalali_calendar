@@ -15,7 +15,7 @@
             </h3>
         </div>
         <div class="panel-body container-fluid">
-            <form method="post" action="{{URL::to('/set/date')}}">
+            <form method="post" action="{{ URL::to('/set/date') }}">
                 {{Form::token()}}
             <div class="row row-lg">
                 <div class="form-group col-xs-12 col-md-6">

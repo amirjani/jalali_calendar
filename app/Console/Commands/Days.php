@@ -72,9 +72,9 @@ class Days extends Command
                         $day->date_fa = $shamsiDate;
                         $day->day_of_week = $dayOfWeek;
                         if ($week % 2 == 0 ){
-                            $day->even_week = 0;
+                            $day->even_week = 1;
                         }else{
-                            $day->even_week = 1 ;
+                            $day->even_week = 0 ;
                         }
                         $day->save();
                     }

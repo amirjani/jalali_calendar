@@ -16,23 +16,20 @@ class UserController extends Controller
      * @return array
      */
     public function setDailySchedule(Request $request){
-        $this->validate($request , [
-            'day_of_week' => 'required',
-            'time' => 'required',
-            'describe' => 'required',
-        ]);
-        try{
-            $program = new Program();
-            $program->user_id = Auth::user()->id;
-            $program->day_of_week = Input::get('day_of_week');
-            $program->time = str_replace([" AM" ," PM"],"",Input::get('time'));
-            $program->describe = Input::get('describe');
+//        $this->validate($request , [
+//            'day_of_week' => 'required',
+//            'time' => 'required',
+//            'describe' => 'required',
+//        ]);
 
-            return redirect()->back();
-        }catch (Exception $e){
-            return redirect()->back();
-        }
-
+        $program = new Program();
+        $program->user_id = auth()->user()->id;
+        $program->day_of_week = Input::get('day_of_week');
+        $program->time = Input::get('time');
+        $program->describe = Input::get('title');
+        $program->save();
+//        dd("amir");
+        return redirect()->back();
 
     }
 
@@ -43,7 +40,6 @@ class UserController extends Controller
     public function deleteSchedule($scheduleId){
         $program = Program::find($scheduleId);
         $program->delete();
-
         return redirect()->back();
     }
 
@@ -70,7 +66,6 @@ class UserController extends Controller
                 $program->describe = Input::get('describe');
                 $program->save();
             }
-
             return redirect()->back();
         }catch (Exception $e){
             return redirect()->back();

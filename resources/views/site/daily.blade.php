@@ -24,14 +24,14 @@
                     </select>
                 </div>
                 <div class="form-group col-xs-12 col-md-6">
-                    <label class="form-control-label" for="inputBasicFirstName">Day Of Week:</label>
-                    <input type="text" class="form-control" name="time" id="timepicker1" name="inputFirstName" placeholder="00:00" autocomplete="off">
+                    <label class="form-control-label" for="inputBasicFirstName">Time:</label>
+                    <input type="text" class="form-control" name="time" autocomplete="off">
                 </div>
                     <div class="form-group col-xs-12 col-md-6">
                         <label class="form-control-label" for="inputBasicFirstName">title:</label>
-                        <input type="text" name="describe" class="form-control" id="describe" name="title" autocomplete="off">
+                        <input type="text" class="form-control" id="describe" name="title" autocomplete="off">
                     </div>
-                <div class="form-group" class="form-group col-xs-12 col-md-6">
+                <div class="form-group col-xs-12 col-md-6">
                     <button style="float: right" type="submit" class="btn btn-primary" id="SaveDailySchedule">Save</button>
                 </div>
                 </form>
