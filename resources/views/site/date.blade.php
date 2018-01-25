@@ -1,9 +1,9 @@
-@extends('layouts.index')
+@extends('layouts.panel')
 
-@section('header')
+@section('css')
     <link rel='stylesheet prefetch' href='{{ url('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css') }}'>
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css'>
-    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel='stylesheet prefetch' href='{{ url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css') }}'>
+    <link rel='stylesheet prefetch' href='{{ url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') }}'>
     <link href="{{ asset('/datepickerfarsi/bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('/datepickerfarsi/bootstrap-theme.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/datepickerfarsi/jquery.Bootstrap-PersianDateTimePicker.css') }}" />
@@ -20,20 +20,17 @@
 
 @section('content')
     <div class="panel">
-        <div class="panel-heading" id="token">
-            <h3 class="panel-title">
-                <small><a class="example-plugin-link" href="https://select2.github.io" target="_blank">Set Daily Schedule</a></small>
-            </h3>
+        <div class="panel-heading" style="background: indianred">
+            <h5 style="padding-right: 50px"> تاریخ امتحان </h5>
         </div>
-
-
-        <div class="panel-body container-fluid">
+        <div class="panel-body container-fluid" style="padding-top: 50px">
             <form method="post" action="{{ URL::to('/set/date') }}">
                 {{Form::token()}}
-                <div class="row row-lg">
+                <div class="row">
                     <div class="input-group form-group col-xs-12 col-md-6 container" style="max-width: 400px;">
+                        {{--<h3 style="display: block" class="form-control-label"> تاریخ امتحان :  </h3>--}}
                         <div class="input-group-addon" data-mddatetimepicker="false" data-trigger="click" data-targetselector="#fromDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="false" data-placement="left">
-                            <span class="glyphicon glyphicon-calendar"></span>
+                            <span class="pe-7s-date" style="color: gray"></span>
                         </div>
                         <input type="text" name="date" class="form-control" id="fromDate1" placeholder="تاریخ" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#fromDate1" data-format="yyyy/mm/dd"/>
                         {{--   data-groupid="group1" data-fromdate="true"  data-enabletimepicker="false" data-placement="right"--}}
@@ -62,7 +59,7 @@
     </div>
 @endsection
 
-@section('footer')
+@section('javascript')
     <script src='{{ asset('http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js') }}'></script>
     <script src='{{ asset('http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js') }}'></script>
     <script src='{{ asset('/datepicker/js/index.js') }}'></script>

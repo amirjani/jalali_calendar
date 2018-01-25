@@ -73,7 +73,7 @@ class AuthController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function logout(){
-        Auth::logout();
+        auth()->logout();
         return redirect('/login');
     }
 }

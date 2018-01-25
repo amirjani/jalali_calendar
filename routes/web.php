@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/test', function () {
+    return view('layouts.panel');
 });
 
 Route::get('/login',['as' => 'login' , "uses" => "Auth\AuthController@loginView"]);

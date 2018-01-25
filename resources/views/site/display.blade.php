@@ -1,45 +1,59 @@
-<!doctype html>
+@extends('layouts.panel')
+{{--<!doctype html>--}}
 
-<html lang="en">
+{{--<html lang="fa">--}}
 
-<head>
+@section('links')
+    <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css') }}"/>
+@stop
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+{{--<head>--}}
+    {{--<script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js') }}"></script>--}}
+    {{--<link rel="stylesheet" type="text/css" href="{{ url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}">--}}
+    {{--<link rel="stylesheet" href="{{ url('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css') }}"/>--}}
+{{--</head>--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+{{--<div class="container">--}}
+    {{--<div class="panel panel-info" style="border-color: gray">--}}
+        {{--<div class="panel-heading">--}}
+            {{--<h2 class="text-center" dir="rtl" style="color: black ;padding: 0 10px 10px 10px"> تقویم برنامه های شخصی </h2>--}}
+        {{--</div>--}}
+        {{--<div class="panel-body" style="background: #ececec">--}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+            {{--{!! $calendar->calendar() !!}--}}
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            {{--{!! $calendar->script() !!}--}}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+        {{--</div>--}}
 
-</head>
+    {{--</div>--}}
 
-<body>
+{{--</div>--}}
 
-<div class="container">
+@section('content')
+    {{--<div class="container">--}}
+        <div class="panel panel-info" style="border-color: gray">
 
-    <div class="panel panel-primary">
+            <div class="panel-heading" style="background: indianred">
+                <h2 class="text-center" dir="rtl" style="color: black ;padding: 0 10px 10px 10px"> تقویم برنامه های شخصی </h2>
+            </div>
 
-        <div class="panel-heading">
-
-            MY Calender
+            <div class="panel-body">
+                {!! $calendar->calendar() !!}
+                {!! $calendar->script() !!}
+            </div>
 
         </div>
+    {{--</div>--}}
+@stop
 
-        <div class="panel-body" >
+@section('javascript')
+    <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js') }}"></script>
+    <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js') }}"></script>
+@stop
+{{--<script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js') }}"></script>--}}
+{{--<script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js') }}"></script>--}}
 
-            {!! $calendar->calendar() !!}
-
-            {!! $calendar->script() !!}
-
-        </div>
-
-    </div>
-
-</div>
-
-</body>
-
-</html>
+{{--</html>--}}
