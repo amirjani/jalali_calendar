@@ -27,10 +27,9 @@ class UserController extends Controller
         $program->day_of_week = Input::get('day_of_week');
         $program->time = Input::get('time');
         $program->describe = Input::get('title');
+        $program->week_kind = Input::get('week_kind');
         $program->save();
-//        dd("amir");
         return redirect()->back();
-
     }
 
     /**
@@ -57,7 +56,7 @@ class UserController extends Controller
 
         try{
             $day = Day::where('date_en',Input::get('date'))->first();
-
+            logger($day) ;
             if ($day){
                 $program = new Program();
                 $program->user_id = Auth::user()->id;
@@ -81,10 +80,12 @@ class UserController extends Controller
             ->select('days.date_en','programs.time','programs.describe')
             ->get();
 
-        $scheduleDay = Day::join('program','programs.day_of_week','=','days.day_of_week')
+        $scheduleDay = Day::join('programs','programs.day_of_week','=','days.day_of_week')
+            ->join('programs' , 'programs.week_kind' , '=' , 'days.even_week')
             ->where('user_id',Auth::id())
             ->select('days.date_en','programs.time','programs.describe')
             ->get();
+
 
         $schedule = [];
         foreach ($scheduleDate as $item) {

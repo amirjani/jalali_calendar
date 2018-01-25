@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('/daily','HomeController@dailyView');
     Route::get('/calender','HomeController@calander');
 
-    Route::post('/set/daily','UserController@setDailySchedule')->name("dailySchedule");
+    Route::post('/set/daily','UserController@setDailySchedule');
     Route::post('/set/date','UserController@setDateSchedule');
     Route::get('/delete/{id}','UserController@deleteSchedule');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Model\Day;
 use Calendar;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -22,10 +23,17 @@ class HomeController extends Controller
             ->get();
 
 
-        $dayOfWeek =  Day::join('programs','programs.day_of_week','=','days.day_of_week')
+        $dayOfWeek = DB::table('programs')
+            ->join('days', 'programs.day_of_week', '=', 'days.day_of_week')
+//            ->join('days', 'programs.week_kind', '=', 'days.even_week')
             ->select('days.date_en','programs.describe')
-            ->where('programs.user_id',Auth::id())
             ->get();
+
+//        $dayOfWeek =  Day::join('programs','programs.day_of_week','=','days.day_of_week')
+////            ->join('programs' , 'programs.week_kind' , '=' , 'days.even_week')
+//            ->select('days.date_en','programs.describe')
+//            ->where('programs.user_id',Auth::id())
+//            ->get();
 
 
 

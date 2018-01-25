@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('header')
-    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='{{ url('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css') }}'>
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css'>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 @endsection
@@ -32,13 +32,15 @@
                         <label class="form-control-label" for="inputBasicFirstName">Time:</label>
                         <div class='input-group'>
                             <input type='text' name="time" class="form-control" id="timepicker1" />
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            {{--<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>--}}
+                            <button class="btn btn-default" data-MdDateTimePicker="true" data-TargetSelector="#input1" data-EnableTimePicker="true" data-Placement="left" data-Trigger="click">انتخاب تاریخ</button>
+
                         </div>
                     </div>
                 </div>
                 <div class="form-group col-xs-12 col-md-6">
                     <label class="form-control-label" for="inputBasicFirstName">title:</label>
-                    <input type="text" name="describe" class="form-control" id="describe" name="title" autocomplete="off">
+                    <input type="text" name="describe" class="form-control" id="describe" autocomplete="off">
                 </div>
                 <div class="form-group col-xs-12 col-md-6">
                     <button style="float: right" type="submit" style="" class="btn btn-primary" id="SaveDateSchedule">Save</button>
@@ -62,5 +64,22 @@
     <script>
         $('#timepicker1').timepicker();
 
+    </script>
+
+    <script type="text/javascript">
+        $('#textBoxInputId').MdPersianDateTimePicker({
+            Placement: 'left',
+            Trigger: 'click',
+            EnableTimePicker: false,
+            TargetSelector: '#ElementId',
+            GroupId: '',
+            ToDate: false,
+            FromDate: false,
+            DisableBeforeToday: false,
+            Disabled: false,
+            Format: 'yyyy/MM/dd',
+            IsGregorian: false,
+            EnglishNumber: false,
+        });
     </script>
 @endsection

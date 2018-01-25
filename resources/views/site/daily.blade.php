@@ -12,28 +12,36 @@
                 <form method="post" action="{{URL::to('/set/daily')}}">
                     {{Form::token()}}
                     <div class="form-group col-xs-12 col-md-6">
-                <label class="form-control-label" for="inputBasicFirstName">Day Of Week:</label>
-                    <select class="form-control" name="day_of_week" id="day" data-plugin="select2">
-                        <option value="0">Saturday</option>
-                        <option value="1">Sunday</option>
-                        <option value="2">Monday</option>
-                        <option value="3">Tuesday</option>
-                        <option value="4">Wednesday</option>
-                        <option value="5">thursday</option>
-                        <option value="6">friday</option>
-                    </select>
-                </div>
-                <div class="form-group col-xs-12 col-md-6">
-                    <label class="form-control-label" for="inputBasicFirstName">Time:</label>
-                    <input type="text" class="form-control" name="time" autocomplete="off">
-                </div>
+                        <label class="form-control-label" for="inputBasicFirstName">Day Of Week:</label>
+                        <select class="form-control" name="day_of_week" id="day" data-plugin="select2">
+                            <option value="0">Saturday</option>
+                            <option value="1">Sunday</option>
+                            <option value="2">Monday</option>
+                            <option value="3">Tuesday</option>
+                            <option value="4">Wednesday</option>
+                            <option value="5">thursday</option>
+                            <option value="6">friday</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-12 col-md-6">
+                        <label class="form-control-label" for="inputBasicFirstName">Week kind:</label>
+                        <select class="form-control" name="week_kind" id="day" data-plugin="select2">
+                            <option value="0">odd</option>
+                            <option value="1">even</option>
+                            <option value="2">typical</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-12 col-md-6">
+                        <label class="form-control-label" for="inputBasicFirstName">Time:</label>
+                        <input type="text" class="form-control" name="time" autocomplete="off">
+                    </div>
                     <div class="form-group col-xs-12 col-md-6">
                         <label class="form-control-label" for="inputBasicFirstName">title:</label>
                         <input type="text" class="form-control" id="describe" name="title" autocomplete="off">
                     </div>
-                <div class="form-group col-xs-12 col-md-6">
-                    <button style="float: right" type="submit" class="btn btn-primary" id="SaveDailySchedule">Save</button>
-                </div>
+                    <div class="form-group col-xs-12 col-md-6">
+                        <button style="float: right" type="submit" class="btn btn-primary" id="SaveDailySchedule">Save</button>
+                    </div>
                 </form>
             </div>
         </div>

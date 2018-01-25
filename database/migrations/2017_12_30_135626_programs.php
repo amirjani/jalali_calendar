@@ -20,6 +20,7 @@ class Programs extends Migration
             $table->integer('day_of_week',false,true)->nullable();
             $table->time('time')->nullable();
             $table->string('describe')->nullable();
+            $table->integer('week_kind')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
