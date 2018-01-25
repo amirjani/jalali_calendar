@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\Commands\Days;
+use App\Exceptions\Handler;
+use App\Libraries\Helpers;
 use App\Model\Day;
 use App\Model\Program;
+use App\Model\TimeConvertor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Mockery\Exception;
+use Morilog\Jalali\jDate;
+use Morilog\Jalali\jDateTime;
+use function PHPSTORM_META\type;
 
 class UserController extends Controller
 {
@@ -27,9 +34,10 @@ class UserController extends Controller
         $program->day_of_week = Input::get('day_of_week');
         $program->time = Input::get('time');
         $program->describe = Input::get('title');
-        $program->week_kind = Input::get('week_kind');
         $program->save();
+//        dd("amir");
         return redirect()->back();
+
     }
 
     /**
@@ -54,9 +62,15 @@ class UserController extends Controller
         ]);
 
 
+        $day = Helpers::PersianToEnglish($request->date);
+
+        $date = \Morilog\Jalali\jDateTime::toGregorian(Helpers::getPersianYear($request->date)+1348, Helpers::getPersianMonth($request->date), Helpers::getPersianDay($request->date));
+//        $data = date('d-m-Y', strtotime($date));
+        $dateString = $date[0] . '-' . $date[1] . '-' .$date[2] ;
+
         try{
-            $day = Day::where('date_en',Input::get('date'))->first();
-            logger($day) ;
+            $day = Day::where('date_en',$dateString)->first();
+
             if ($day){
                 $program = new Program();
                 $program->user_id = Auth::user()->id;
@@ -80,12 +94,10 @@ class UserController extends Controller
             ->select('days.date_en','programs.time','programs.describe')
             ->get();
 
-        $scheduleDay = Day::join('programs','programs.day_of_week','=','days.day_of_week')
-            ->join('programs' , 'programs.week_kind' , '=' , 'days.even_week')
+        $scheduleDay = Day::join('program','programs.day_of_week','=','days.day_of_week')
             ->where('user_id',Auth::id())
             ->select('days.date_en','programs.time','programs.describe')
             ->get();
-
 
         $schedule = [];
         foreach ($scheduleDate as $item) {
