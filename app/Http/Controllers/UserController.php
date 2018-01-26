@@ -34,6 +34,7 @@ class UserController extends Controller
         $program->day_of_week = Input::get('day_of_week');
         $program->time = Input::get('time');
         $program->describe = Input::get('title');
+        $program->week_kind = $request->week_kind ;
         $program->save();
 //        dd("amir");
         return redirect()->back();
