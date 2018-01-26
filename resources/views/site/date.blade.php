@@ -28,12 +28,10 @@
                 {{Form::token()}}
                 <div class="row">
                     <div class="input-group form-group col-xs-12 col-md-6 container" style="max-width: 400px;">
-                        {{--<h3 style="display: block" class="form-control-label"> تاریخ امتحان :  </h3>--}}
                         <div class="input-group-addon" data-mddatetimepicker="false" data-trigger="click" data-targetselector="#fromDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="false" data-placement="left">
                             <span class="pe-7s-date" style="color: gray"></span>
                         </div>
                         <input type="text" name="date" class="form-control" id="fromDate1" placeholder="تاریخ" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#fromDate1" data-format="yyyy/mm/dd"/>
-                        {{--   data-groupid="group1" data-fromdate="true"  data-enabletimepicker="false" data-placement="right"--}}
                     </div>
 
                     <div class="input-group form-group col-xs-12 col-md-6 container" style="max-width: 400px;">

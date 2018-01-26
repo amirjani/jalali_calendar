@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function setDailySchedule(Request $request){
+    public function setDailySchedule(Request $request)
+    {
         $program = new Program();
         $program->user_id = auth()->user()->id;
         $program->day_of_week = $request->day_of_week;
@@ -21,11 +22,17 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function setDateSchedule(Request $request){
+    public function setDateSchedule(Request $request)
+    {
+        $dateDay =Helpers::convertNumberToEN($request->date) ;
+        $data = str_split($dateDay , 8);
+        $dateMonth =Helpers::convertNumberToEN($request->date) ;
+        $dataMonth = str_split($dateMonth , 5);
+        $dataMonth = str_split($dataMonth[1] , 2);
+        logger($dataMonth);
 
-        $date =Helpers::convertNumberToEN($request->date) ;
-        $data = str_split($date , 8);
-        $date = \Morilog\Jalali\jDateTime::toGregorian(Helpers::PersianToEnglish(Helpers::getPersianYear($request->date))+1348 , Helpers::PersianToEnglish(Helpers::getPersianMonth($request->date)) , $data[1]);
+        logger(Helpers::PersianToEnglish(Helpers::getPersianMonth($request->date)));
+        $date = \Morilog\Jalali\jDateTime::toGregorian(Helpers::PersianToEnglish(Helpers::getPersianYear($request->date))+1348 , $dataMonth[0] , $data[1]);
 
         $dateString = $date[0] . '-' . $date[1] . '-' .$date[2] ;
         $day = Day::where('date_en',$dateString)->first();

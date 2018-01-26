@@ -21,6 +21,8 @@ class Programs extends Migration
             $table->time('time')->nullable();
             $table->string('describe')->nullable();
             $table->integer('week_kind')->nullable();
+            $table->bigInteger('start_day_id' , false , true)->nullable() ;
+            $table->bigInteger('end_day_id' , false , true)->nullable() ;
             $table->timestamps();
             $table->softDeletes();
 
