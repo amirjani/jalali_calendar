@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Console\Commands\Days;
-use App\Exceptions\Handler;
 use App\Libraries\Helpers;
 use App\Model\Day;
 use App\Model\Program;
-use App\Model\TimeConvertor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
-use Mockery\Exception;
-use Morilog\Jalali\jDate;
-use Morilog\Jalali\jDateTime;
-use function PHPSTORM_META\type;
 
 class UserController extends Controller
 {
