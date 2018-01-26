@@ -63,7 +63,7 @@ class HomeController extends Controller
 
         foreach ($dayOfWeek as $item) {
 
-            if ($item->week_kind == 0)
+//            if ($item->week_kind == 2)
             $events[] = Calendar::event(
 
                 $item->describe . ' - ' . $item->time,
