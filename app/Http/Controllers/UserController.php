@@ -29,9 +29,6 @@ class UserController extends Controller
         $dateMonth =Helpers::convertNumberToEN($request->date) ;
         $dataMonth = str_split($dateMonth , 5);
         $dataMonth = str_split($dataMonth[1] , 2);
-        logger($dataMonth);
-
-        logger(Helpers::PersianToEnglish(Helpers::getPersianMonth($request->date)));
         $date = \Morilog\Jalali\jDateTime::toGregorian(Helpers::PersianToEnglish(Helpers::getPersianYear($request->date))+1348 , $dataMonth[0] , $data[1]);
 
         $dateString = $date[0] . '-' . $date[1] . '-' .$date[2] ;
