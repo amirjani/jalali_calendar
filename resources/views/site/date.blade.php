@@ -45,10 +45,10 @@
 
                     <div class="form-group input-group container col-xs-12 col-md-6" style="max-width: 400px;">
                         <label class="form-control-label" for="inputBasicFirstName">title:</label>
-                        <input type="text" name="describe" class="form-control" id="describe" name="title" autocomplete="off">
+                        <input type="text" name="describe" class="form-control" id="describe" autocomplete="off">
                     </div>
                     <div class="form-group input-group container col-xs-12 col-md-6" style="max-width: 400px;">
-                        <button style="float: left" type="submit" style="" class="btn btn-primary" id="SaveDateSchedule">ذخیره</button>
+                        <button style="float: left" type="submit"  class="btn btn-primary" id="SaveDateSchedule">ذخیره</button>
                     </div>
 
                 </div>

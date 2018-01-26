@@ -1,11 +1,11 @@
 <?php
 namespace App\Libraries;
 use App;
+use Carbon\Carbon ;
 use File;
 use Config;
 use Morilog\Jalali\jDate;
 use stdClass;
-use Carbon\Carbon;
 class Helpers {
     public static function convertNumberToEN($str) {
         $arabic2Persian = new Helpers;
@@ -62,5 +62,12 @@ class Helpers {
     {
         $time_date = date("D" , strtotime($time));
         return jDate::forge($time_date)->format('%d');
+    }
+
+    public static function getPersianDay2($timestemp)
+    {
+        $day = Carbon::createFromFormat('Y-m-d', $timestemp)->day;
+        dd($day);
+        return $day ;
     }
 }

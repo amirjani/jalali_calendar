@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Model\Day;
 use Calendar;
-use Faker\Provider\DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -23,19 +22,27 @@ class HomeController extends Controller
             ->where('programs.user_id',Auth::id())
             ->get();
 
-
         $dayOfWeek = DB::table('programs')
             ->join('days', 'programs.day_of_week', '=', 'days.day_of_week')
 //            ->join('days', 'programs.week_kind', '=', 'days.even_week')
             ->select('days.date_en','programs.describe' , 'programs.time' , 'programs.week_kind')
-//            ->where('programs.week_kind' , '=' , 1)
             ->get();
+
+//        $dayOfWeek =  Day::join('programs','programs.day_of_week','=','days.day_of_week')
+////            ->join('programs' , 'programs.week_kind' , '=' , 'days.even_week')
+//            ->select('days.date_en','programs.describe')
+//            ->where('programs.user_id',Auth::id())
+//            ->get();
+
+
 
         foreach ($dayOfDate as $item) {
 
             $events[] = Calendar::event(
 
-                $item->describe . ' - ' . $item->time ,
+                $item->describe . ' - ' . $item->time,
+
+
 
                 true,
 
@@ -44,80 +51,38 @@ class HomeController extends Controller
                 new \DateTime($item->date_en.' +1 day') ,
 
                 null,
-                // Add color and link on event
-                [
-                    'color' => 'red',
-//                    'height' => '200px'
-                ]
+                                // Add color and link on event
+                     [
+                        'color' => 'red',
+                     ]
 
             );
         }
 
 
 
-        // this part is for date
         foreach ($dayOfWeek as $item) {
 
-            if ($item->week_kind == 1){
+            if ($item->week_kind == 0)
+            $events[] = Calendar::event(
 
-                $events[] = Calendar::event(
+                $item->describe . ' - ' . $item->time,
 
-                    $item->describe . ' - ' . $item->time ,
+                true,
 
-                    true,
+                new \DateTime($item->date_en),
 
-                    new \DateTime($item->date_en),
-
-                    new \DateTime($item->date_en.' +1 day')
-
-                );
-            }
-
-            if ($item->week_kind == 0) {
-                $events[] = Calendar::event(
-                    $item->describe . ' - ' . $item->time ,
-                    true,
-                    new \DateTime($item->date_en),
-                    new \DateTime($item->date_en.' +1 day'),
-                    null ,
-                    [
-                        'color' => 'blue'
-                    ]
-                );
-            }
-
-            if ($item->week_kind == 2 or $item->week_kind == null) {
-                $events[] = Calendar::event(
-                    $item->describe . ' - ' . $item->time ,
-                    true ,
-                    new \DateTime($item->date_en) ,
-                    new \DateTime($item->date_en.' +1 day'),
-                    null ,
-                    [
-                        'color' => 'orange'
-                    ]
-
-                ) ;
-            }
+                new \DateTime($item->date_en.' +1 day')   ,
 
 
-
+                null,
+                                // Add color and link on event
+                                [
+                                    'color' => 'red',
+                //                    'height' => '200px'
+                                ]
+            );
         }
-
-//        foreach ($dayOfWeek as $item){
-//            if ($item->week_kind)
-//        }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

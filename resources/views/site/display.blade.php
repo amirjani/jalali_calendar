@@ -52,7 +52,6 @@
 @section('javascript')
     <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js') }}"></script>
     <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js') }}"></script>
-{{--///Applications/XAMPP/xamppfiles/htdocs/calendar-schedule/bower_components/fullcalendar/dist/locale-all.js--}}
     <script src='{{ asset('fullcalendar/dist/fullcalendar.js') }}'></script>
     <script src='{{ asset('fullcalendar/dist/locale-all.js') }}'></script>
     <script>
@@ -63,12 +62,20 @@
                 locale: 'fa' ,
                 isJalaali : true ,
                 isRTL : true ,
-                lang : "fa" ,
+                lang : "fa"
+                // events : [
+                //     {
+                //         title: 'Long Event',
+                //         start: new Date(2018, 1, 1),
+                //         end: new Date(2018, 2, 1)
+                //     }
+                // ]
             });
 
         });
 
     </script>
+
 @stop
 {{--<script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js') }}"></script>--}}
 {{--<script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js') }}"></script>--}}

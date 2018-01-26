@@ -12,13 +12,13 @@
                     <div class="form-group col-xs-12 col-md-6">
                         <label class="form-control-label" for="inputBasicFirstName">روز های کلاس :</label>
                         <select class="form-control" name="day_of_week" id="day" data-plugin="select2">
-                            <option value="0">شنبه</option>
-                            <option value="1">یک شنبه</option>
-                            <option value="2">دو شنبه</option>
-                            <option value="3">سه شنبه</option>
-                            <option value="4">چهار شنبه</option>
-                            <option value="5">پنج شنبه</option>
-                            <option value="6">جمعه</option>
+                            <option value=6>شنبه</option>
+                            <option value="0">یک شنبه</option>
+                            <option value="1">دو شنبه</option>
+                            <option value="2">سه شنبه</option>
+                            <option value="3">چهار شنبه</option>
+                            <option value="4">پنج شنبه</option>
+                            <option value="5">جمعه</option>
                         </select>
                     </div>
                     <div class="form-group col-xs-12 col-md-6">

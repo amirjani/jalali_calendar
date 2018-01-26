@@ -18,77 +18,37 @@ use function PHPSTORM_META\type;
 
 class UserController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return array
-     */
     public function setDailySchedule(Request $request){
-//        $this->validate($request , [
-//            'day_of_week' => 'required',
-//            'time' => 'required',
-//            'describe' => 'required',
-//        ]);
-
         $program = new Program();
         $program->user_id = auth()->user()->id;
-        $program->day_of_week = Input::get('day_of_week');
-        $program->time = Input::get('time');
-        $program->describe = Input::get('title');
+        $program->day_of_week = $request->day_of_week;
+        $program->time = $request->time;
+        $program->describe = $request->title;
         $program->week_kind = $request->week_kind ;
         $program->save();
-//        dd("amir");
-        return redirect()->back();
-
-    }
-
-    /**
-     * @param $scheduleId
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function deleteSchedule($scheduleId){
-        $program = Program::find($scheduleId);
-        $program->delete();
         return redirect()->back();
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function setDateSchedule(Request $request){
-        $this->validate($request , [
-            'date' => 'required',
-            'time' => 'required',
-            'describe' => 'required',
-        ]);
 
+        $date =Helpers::convertNumberToEN($request->date) ;
+        $data = str_split($date , 8);
+        $date = \Morilog\Jalali\jDateTime::toGregorian(Helpers::PersianToEnglish(Helpers::getPersianYear($request->date))+1348 , Helpers::PersianToEnglish(Helpers::getPersianMonth($request->date)) , $data[1]);
 
-        $day = Helpers::PersianToEnglish($request->date);
-
-        $date = \Morilog\Jalali\jDateTime::toGregorian(Helpers::getPersianYear($request->date)+1348, Helpers::getPersianMonth($request->date), Helpers::getPersianDay($request->date));
-//        $data = date('d-m-Y', strtotime($date));
         $dateString = $date[0] . '-' . $date[1] . '-' .$date[2] ;
+        $day = Day::where('date_en',$dateString)->first();
 
-        try{
-            $day = Day::where('date_en',$dateString)->first();
-
-            if ($day){
-                $program = new Program();
-                $program->user_id = Auth::user()->id;
-                $program->day_id = $day->id;
-                $program->time = str_replace([" AM" ," PM"],"",Input::get('time'));
-                $program->describe = Input::get('describe');
-                $program->save();
-            }
-            return redirect()->back();
-        }catch (Exception $e){
-            return redirect()->back();
+        if ($day){
+            $program = new Program();
+            $program->user_id = auth()->user()->id;
+            $program->day_id = $day->id;
+            $program->time = $request->time;
+            $program->describe = $request->describe;
+            $program->save();
         }
+        return redirect()->back();
     }
 
-    /**
-     * @return array
-     */
     public function getSchedule(){
         $scheduleDate = Day::join('programs','programs.day_id','=','days.id')
             ->where('user_id',Auth::id())
