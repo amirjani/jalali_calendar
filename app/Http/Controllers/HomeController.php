@@ -58,22 +58,24 @@ class HomeController extends Controller
 
         foreach ($dayOfWeekEven as $item) {
 
-            $events[] = Calendar::event(
+            if ($item->week_kind == 1){
+                $events[] = Calendar::event(
 
-                $item->describe . ' - ' . $item->time,
+                    $item->describe . ' - ' . $item->time,
 
-                true,
+                    true,
 
-                new \DateTime($item->date_en),
+                    new \DateTime($item->date_en),
 
-                new \DateTime($item->date_en.' +1 day')   ,
+                    new \DateTime($item->date_en.' +1 day')   ,
 
-                null,
-                // Add color and link on event
-                [
-                    'color' => 'blue',
-                ]
-            );
+                    null,
+                    // Add color and link on event
+                    [
+                        'color' => 'blue',
+                    ]
+                );
+            }
         }
 
         foreach ($dayOfWeekOdd as $item) {
@@ -114,7 +116,7 @@ class HomeController extends Controller
                     ]
                 );
             }
-            
+
 
         }
 
