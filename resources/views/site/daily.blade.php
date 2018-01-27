@@ -56,6 +56,20 @@
                         <label class="form-control-label" for="inputBasicFirstName">نام :</label>
                         <input type="text" class="form-control" id="describe" name="title" autocomplete="off" placeholder="نام کلاس را وارد کنید">
                     </div>
+
+                    {{--<div class="input-group form-group col-xs-12 col-md-6 container" style="max-width: 400px;">--}}
+                        {{--<div class="input-group-addon" data-mddatetimepicker="false" data-trigger="click" data-targetselector="#fromDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="false" data-placement="left">--}}
+                            {{--<span class="pe-7s-date" style="color: gray"></span>--}}
+                        {{--</div>--}}
+                        {{--<input type="text" name="start_day" class="form-control" id="fromDate1" placeholder="از تاریخ" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#fromDate1" data-format="yyyy/mm/dd"/>--}}
+                    {{--</div>--}}
+                    {{--<div class="input-group form-group col-xs-12 col-md-6 container" style="max-width: 400px;">--}}
+                        {{--<div class="input-group-addon" data-mddatetimepicker="false" data-trigger="click" data-targetselector="#fromDate1" data-groupid="group1" data-fromdate="true" data-enabletimepicker="false" data-placement="left">--}}
+                            {{--<span class="pe-7s-date" style="color: gray"></span>--}}
+                        {{--</div>--}}
+                        {{--<input type="text" name="end_day" class="form-control" id="fromDate2" placeholder="تا تاریخ" data-mddatetimepicker="true" data-trigger="click" data-targetselector="#fromDate1" data-format="yyyy/mm/dd"/>--}}
+                    {{--</div>--}}
+
                     <div class="form-group col-xs-12 col-md-6">
                         <button style="margin-top:20px ; float: right" type="submit" class="btn btn-primary" id="SaveDailySchedule">ذخیره</button>
                     </div>

@@ -70,9 +70,7 @@ class TimeConvertor extends Model
 
     public static function getWeek($date)
     {
-//        logger($date);
         $week = Carbon::parse($date);
-//        logger($shit->weekOfMonth);
         return $week->weekOfYear;
     }
 

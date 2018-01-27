@@ -47,20 +47,6 @@ class Days extends Command
             if ($year > 1300 && $year < 1500){
                 $jdate = $year.'-01-01';
                 $miladiDate = TimeConvertor::convertShamsiToMiladi($jdate);
-
-//                $week = Carbon::createFromDate($miladiDate);
-//                logger($week);
-
-
-
-
-//                logger($)
-//                if ( $day % 2 == 0){
-//                    $isEven = 1 ;
-//                }else{
-//                    $isEven = 0 ;
-//                }
-//                logger($day);
                 $this->output->progressStart(366);
                 for ($i = 1 ; $i <= 366  ; $i++){
                     $shamsiDate = TimeConvertor::ConvertMiladiToShamsi($miladiDate);

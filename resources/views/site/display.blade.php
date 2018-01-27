@@ -30,13 +30,10 @@
                 isJalaali : true ,
                 isRTL : true ,
                 lang : "fa" ,
-                events : [
-                    {
-                        // title: 'Long Event',
-                        start: new Date(2018, 1, 1),
-                        end: new Date(2018, 2, 1)
-                    }
-                ]
+                validRange: {
+                    start: '2018-01-01',
+                    end: '2018-02-01'
+                }
             });
 
         });
