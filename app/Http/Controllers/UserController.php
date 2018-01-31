@@ -24,6 +24,11 @@ class UserController extends Controller
 
     public function setDateSchedule(Request $request)
     {
+        //1396/11/23
+//        {
+//          [0] => 1396/11/
+//          [1] => 23
+//        }
         $dateDay =Helpers::convertNumberToEN($request->date) ;
         $data = str_split($dateDay , 8);
         $dateMonth =Helpers::convertNumberToEN($request->date) ;
